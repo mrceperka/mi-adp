@@ -25,19 +25,19 @@ public class Cache<K, V> {
     }
     
     public void add(K key, V value) {
-        
+        this.cache.addItem(key, value);
     }
     
     public V get(K key) {
-        
+        return this.cache.getItem(key);
     }
     
     public int size() {
-        
+        return this.cache.size();
     }
     
     public void cleanup() {
-        
+        this.cache.cleanup();
     }
     
 }
