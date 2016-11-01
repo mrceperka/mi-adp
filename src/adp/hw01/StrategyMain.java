@@ -20,17 +20,23 @@ public class StrategyMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Map <KeyInterface, ValueInterface> map = new HashMap<>();
-        LruStrategyCache lru = new LruStrategyCache(map);
+        Map <KeyInterface, ValueInterface> map = new HashMap();
+        LruStrategyCache<KeyInterface, ValueInterface> lru = new LruStrategyCache(map, 10);
         
-        Cache c = new Cache(lru);
+        Cache <KeyInterface, ValueInterface> c = new Cache(lru);
         StringKey k1 = new StringKey("1");
         IntegerKey k2 = new IntegerKey(15);
+        IntegerKey k3 = new IntegerKey(16);
         c.add(k1, new StringValue("here is one"));
         c.add(k2, new IntegerValue(15));
+        c.add(k3, new IntegerValue(16));
         
-        System.out.println(c.get(k1));
-        System.out.println(c.get(k2));
+        //ValueInterface v1 = c.get(k1);
+        //ValueInterface v2 = c.get(k2);
+        
+       
+        //System.out.println(v1.getValue());
+        //System.out.println(v2.getValue());
         
     }
     

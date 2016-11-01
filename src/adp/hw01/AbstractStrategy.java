@@ -24,7 +24,7 @@ public abstract class AbstractStrategy<K,V> implements CacheStrategyInterface<K,
     }
     
     @Override
-    public void addItem(K key, V value) {
-        this.cache.put(key, value);
+    public V getItem(K key) {
+        return this.cache.get(key);
     }
 }
