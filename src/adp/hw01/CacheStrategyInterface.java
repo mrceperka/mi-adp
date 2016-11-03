@@ -12,7 +12,7 @@ package adp.hw01;
  * @param <V> - cache value data type
  */
 public interface CacheStrategyInterface<K, V> {
-    
+        
     public void addItem(K key, V value);
     
     public V getItem(K key);

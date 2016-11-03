@@ -5,36 +5,36 @@
  */
 package adp.hw01;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.Iterator;
-import adp.hw01.key.*;
-
 /**
  *
  * @author benesjo6
  */
-public class LruStrategyCache<K, V> extends AbstractStrategy<K, V> {
+public class LruStrategyCache<K, V> implements CacheStrategyInterface<K, V>{
 
-    public LruStrategyCache(Map<K, V> cache, int maxSize) {
-        this.cache = cache;
-        this.maxSize = maxSize;
+    private CacheMap<K, V> cache;
+    
+    public LruStrategyCache(int maxSize) {
+        this.cache = new LruCacheMap<>(maxSize);
     }
     
     @Override
     public void addItem(K key, V value) {
-        if(this.size() < this.maxSize) {
-            Set<K> keySet = this.cache.keySet();
-            Iterator<K> i = keySet.iterator();
-            while(i.hasNext()) {
-                K k = i.next();
-                System.out.println(k);
-            }
-            //this.cache.replace(key, value);
-            this.cache.put(key, value);
-        } else {
-            //LRU logic
-        }
-        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public V getItem(K key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int size() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void cleanup() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

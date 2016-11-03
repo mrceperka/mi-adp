@@ -10,20 +10,13 @@ package adp.hw01;
  * @author benesjo6
  */
 public class Cache<K, V> {
-    private CacheStrategyInterface<K, V> cache;
+    
+    private final CacheStrategyInterface<K, V> cache;
 
     public Cache(CacheStrategyInterface<K, V> cache) {
         this.cache = cache;
     }
 
-    public CacheStrategyInterface<K, V> getCache() {
-        return cache;
-    }
-
-    public void setCache(CacheStrategyInterface<K, V> cache) {
-        this.cache = cache;
-    }
-    
     public void add(K key, V value) {
         this.cache.addItem(key, value);
     }

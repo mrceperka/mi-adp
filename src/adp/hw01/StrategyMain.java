@@ -20,8 +20,8 @@ public class StrategyMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Map <KeyInterface, ValueInterface> map = new HashMap();
-        LruStrategyCache<KeyInterface, ValueInterface> lru = new LruStrategyCache(map, 10);
+        //Map <KeyInterface, ValueInterface> map = new HashMap();
+        /*LruStrategyCache<KeyInterface, ValueInterface> lru = new LruStrategyCache(map, 3);
         
         Cache <KeyInterface, ValueInterface> c = new Cache(lru);
         StringKey k1 = new StringKey("1");
@@ -29,7 +29,7 @@ public class StrategyMain {
         IntegerKey k3 = new IntegerKey(16);
         c.add(k1, new StringValue("here is one"));
         c.add(k2, new IntegerValue(15));
-        c.add(k3, new IntegerValue(16));
+        c.add(k3, new IntegerValue(16));*/
         
         //ValueInterface v1 = c.get(k1);
         //ValueInterface v2 = c.get(k2);

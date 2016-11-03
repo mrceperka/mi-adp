@@ -5,7 +5,7 @@
  */
 package adp.hw01.key;
 
-public class IntegerKey implements KeyInterface {
+public class IntegerKey extends KeyInterface {
     private final Integer key;
     
     public IntegerKey(Integer key) {
@@ -20,5 +20,10 @@ public class IntegerKey implements KeyInterface {
     @Override
     public Integer getKey() {
         return this.key;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

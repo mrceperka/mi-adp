@@ -5,23 +5,19 @@
  */
 package adp.hw01;
 
-import java.util.Map;
 
 /**
  *
  * @author benesjo6
  * @param <V> - cache value data type
  */
-public class FifoStrategyCache<K, V> implements CacheStrategyInterface<K, V>{
-    
-    private Map<K, V> cache;
+public class FifoStrategyCache<K, V> implements CacheStrategyInterface<K, V> {
+
+    private CacheMap<K, V> cache;
+    private int maxSize;
 
     public FifoStrategyCache(int maxSize) {
-        
-    }
-
-    public FifoStrategyCache(Map<K, V> cache) {
-        this.cache = cache;
+        this.cache = new FifoCacheMap<>(maxSize);
     }
 
     @Override
@@ -44,5 +40,5 @@ public class FifoStrategyCache<K, V> implements CacheStrategyInterface<K, V>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
+
 }
