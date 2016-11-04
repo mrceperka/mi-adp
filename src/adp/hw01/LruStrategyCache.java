@@ -9,32 +9,32 @@ package adp.hw01;
  *
  * @author benesjo6
  */
-public class LruStrategyCache<K, V> implements CacheStrategyInterface<K, V>{
+public class LruStrategyCache<K, V> implements CacheStrategyInterface<K, V> {
 
-    private CacheMap<K, V> cache;
-    
+    private final CacheMap<K, V> cache;
+
     public LruStrategyCache(int maxSize) {
         this.cache = new LruCacheMap<>(maxSize);
     }
-    
+
     @Override
     public void addItem(K key, V value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        cache.getCache().put(key, value);
     }
 
     @Override
     public V getItem(K key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cache.getCache().get(key);
     }
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cache.getCache().size();
     }
 
     @Override
     public void cleanup() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        cache.getCache().clear();
     }
 
 }

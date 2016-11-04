@@ -13,7 +13,7 @@ package adp.hw01;
  */
 public class FifoStrategyCache<K, V> implements CacheStrategyInterface<K, V> {
 
-    private CacheMap<K, V> cache;
+    private final CacheMap<K, V> cache;
     private int maxSize;
 
     public FifoStrategyCache(int maxSize) {
@@ -22,22 +22,22 @@ public class FifoStrategyCache<K, V> implements CacheStrategyInterface<K, V> {
 
     @Override
     public void addItem(K key, V value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        cache.getCache().put(key, value);
     }
 
     @Override
     public V getItem(K key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cache.getCache().get(key);
     }
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cache.getCache().size();
     }
 
     @Override
     public void cleanup() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        cache.getCache().clear();
     }
 
 

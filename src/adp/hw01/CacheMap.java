@@ -21,7 +21,7 @@ public abstract class CacheMap<K, V> {
         this.maxSize = maxSize;
     }
 
-    protected <K, V> Map<K, V> createLruOrFifoMap(int maxSize, boolean lru) {
+    protected <K, V> Map<K, V> createLruOrFifoMap(final int maxSize, boolean lru) {
         return new LinkedHashMap<K, V>(maxSize, 1.0f, lru) {
             @Override
             protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
