@@ -5,26 +5,28 @@
  */
 package adp.hw01;
 
+import adp.hw01.key.AbstractKey;
+import adp.hw01.value.ValueInterface;
 /**
  *
  * @author benesjo6
  */
-public class LruStrategyCache<K, V> implements CacheStrategyInterface<K, V> {
+public class LruStrategyCache implements CacheStrategyInterface<AbstractKey, ValueInterface> {
 
-    private final CacheMap<K, V> cache;
+    private final CacheMap<String, ValueInterface> cache;
 
     public LruStrategyCache(int maxSize) {
         this.cache = new LruCacheMap<>(maxSize);
     }
 
     @Override
-    public void addItem(K key, V value) {
-        cache.getCache().put(key, value);
+    public void addItem(AbstractKey key, ValueInterface value) {
+        cache.getCache().put(key.getHash(), value);
     }
 
     @Override
-    public V getItem(K key) {
-        return cache.getCache().get(key);
+    public ValueInterface getItem(AbstractKey key) {
+        return cache.getCache().get(key.getHash());
     }
 
     @Override

@@ -19,25 +19,47 @@ public class StrategyMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        //Map <KeyInterface, ValueInterface> map = new HashMap();
-        /*LruStrategyCache<KeyInterface, ValueInterface> lru = new LruStrategyCache(map, 3);
+        System.out.println("This is LRU!");
+        LruStrategyCache lruStrategy = new LruStrategyCache(3);
+        Cache<AbstractKey, AbstractValue> c1 = new Cache(lruStrategy);
         
-        Cache <KeyInterface, ValueInterface> c = new Cache(lru);
-        StringKey k1 = new StringKey("1");
-        IntegerKey k2 = new IntegerKey(15);
-        IntegerKey k3 = new IntegerKey(16);
-        c.add(k1, new StringValue("here is one"));
-        c.add(k2, new IntegerValue(15));
-        c.add(k3, new IntegerValue(16));*/
+        c1.add(new StringKey("1"), new StringValue("here is one"));
+        c1.add(new IntegerKey(2), new IntegerValue(2));
+        c1.add(new IntegerKey(3), new IntegerValue(3));
+        c1.get(new StringKey("1")); //1 used again => 2 will be missing
+        c1.add(new StringKey("4"), new StringValue("here is four"));
         
-        //ValueInterface v1 = c.get(k1);
-        //ValueInterface v2 = c.get(k2);
+        System.out.println(c1.get(new StringKey("1")).getValue());
+        System.out.println("missing: " + c1.get(new IntegerKey(2)));
+        System.out.println(c1.get(new IntegerKey(3)).getValue());
+        System.out.println(c1.get(new StringKey("4")).getValue());
+
         
-       
-        //System.out.println(v1.getValue());
-        //System.out.println(v2.getValue());
         
+        System.out.println();
+        System.out.println("This is FIFO!");
+        FifoStrategyCache fifoStrategy = new FifoStrategyCache(3); 
+        Cache<AbstractKey, AbstractValue> c2 = new Cache(fifoStrategy);
+        
+        c2.add(new StringKey("1"), new StringValue("here is one"));
+        c2.add(new IntegerKey(2), new IntegerValue(2));
+        c2.add(new IntegerKey(3), new IntegerValue(3));
+        c2.get(new StringKey("1")); //does not care, this is FIFO
+        c2.add(new StringKey("4"), new StringValue("here is four"));
+        c2.add(new StringKey("4"), new StringValue("here was four")); //overwriting works
+        
+        System.out.println("missing: " + c2.get(new StringKey("1"))); //will be missing
+        System.out.println(c2.get(new IntegerKey(2)).getValue());
+        System.out.println(c2.get(new IntegerKey(3)).getValue());
+        System.out.println(c2.get(new StringKey("4")).getValue());
+
+        
+        
+        System.out.println();
+        System.out.println("Compare keys!");
+        System.out.println("\"1\" == 1 " + (new StringKey("1")).compareTo(new IntegerKey(1)));
+        System.out.println("\"1\" == 2 " + (new StringKey("1")).compareTo(new IntegerKey(2)));
+        System.out.println("\"03\" == 3 " + (new StringKey("03")).compareTo(new IntegerKey(3)));
     }
     
 }

@@ -9,17 +9,9 @@ package adp.hw01.value;
  *
  * @author yadmin
  */
-public class IntegerValue implements ValueInterface {
-    private final Integer value;
+public class IntegerValue extends AbstractValue<Integer> {
 
     public IntegerValue(Integer value) {
-        this.value = value;
+        super(value);
     }
-    
-    @Override
-    public Integer getValue() {
-        return value;
-    }
-
-    
 }

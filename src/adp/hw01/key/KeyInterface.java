@@ -5,10 +5,10 @@
  */
 package adp.hw01.key;
 
-public abstract class KeyInterface<T> implements Comparable<T> {
-    
-    public abstract String getHash();
-    public abstract T getKey();
-
-    
+/**
+ *
+ * @author yadmin
+ */
+public interface KeyInterface {
+    public String getHash();
 }

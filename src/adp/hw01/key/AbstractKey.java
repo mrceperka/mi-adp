@@ -5,10 +5,21 @@
  */
 package adp.hw01.key;
 
-public abstract class KeyInterface<T> implements Comparable<T> {
+public abstract class AbstractKey<T> implements Comparable<AbstractKey>, KeyInterface {
+    private final T key;
     
-    public abstract String getHash();
-    public abstract T getKey();
+    public AbstractKey(T key){
+        this.key = key;
+    }
+    
+    public T getKey() {
+        return this.key;
+    }
 
+    @Override
+    public int compareTo(AbstractKey ak) {
+        return this.getHash().compareTo(ak.getHash());
+    }
+    
     
 }

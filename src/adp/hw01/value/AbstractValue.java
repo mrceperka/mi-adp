@@ -9,9 +9,16 @@ package adp.hw01.value;
  *
  * @author yadmin
  */
-public class StringValue extends AbstractValue<String> {
+public class AbstractValue<T> implements ValueInterface<T> {
+    private final T value;
+    
+    public AbstractValue(T value) {
+        this.value = value;
+    }
 
-    public StringValue(String value) {
-        super(value);
-    }    
+    @Override
+    public T getValue() {
+        return this.value;
+    }
+    
 }

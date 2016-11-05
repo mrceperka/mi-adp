@@ -5,20 +5,16 @@
  */
 package adp.hw01.key;
 
-public class StringKey implements KeyInterface {
-    private final String key;
+public class StringKey extends AbstractKey<String> {
     
     public StringKey(String key) {
-        this.key = key;
+        super(key);
     }
     
     @Override
     public String getHash() {
-        return key;
+        return this.getKey();
     }
     
-    @Override
-    public String getKey() {
-        return this.key;
-    }
+    
 }
